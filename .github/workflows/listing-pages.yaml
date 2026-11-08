@@ -93,7 +93,7 @@ jobs:
             const locality = (area || "").replace(/\b[A-Z]{1,2}\d{1,2}[A-Z]?(\s*\d[A-Z]{2})?\b/i, "").replace(/[,\s]+$/, "").trim();
             const pc = m ? m[1] : "";
             const town = pc === "BS31" ? "Keynsham" : /^BA\d/.test(pc) ? "Bath" : /^BS\d/.test(pc) ? "Bristol" : "";
-            return { locality: locality || (m ? town : area) || "Bristol", postcode: pc };
+            return { locality: locality || town || pc || "United Kingdom", postcode: pc };
           }
           const folder = (l) => (l.kind === "job" ? "jobs" : "help");
           const pathOf = (l) => `/${folder(l)}/${slugify(l.title + " " + place(l.area).locality + " " + l.date)}-${l.id.slice(0, 8)}.html`;
@@ -181,14 +181,14 @@ jobs:
           ${l.requirements ? `<h2>Requirements</h2>${para(l.requirements)}` : ""}
           <a class="btn" href="${appUrl}">${job ? "Apply on NearTask" : "Send an offer on NearTask"}</a>
           <p class="mute">Free to apply. You chat with ${esc(who)} in the app; pay is agreed directly between you.</p>
-          <p><a href="/${folder(l)}/">More ${job ? "shifts and jobs" : "requests for help"} near Bristol, Keynsham and Bath</a></p>`;
+          <p><a href="/${folder(l)}/">More ${job ? "shifts and jobs" : "requests for help"} on NearTask</a></p>`;
             return { path, html: shell({ title, description, path, body, jsonld }), lastmod: (l.created_at || "").slice(0, 10) };
           }
 
           function indexPage(kind, rows) {
             const job = kind === "jobs", path = `/${kind}/`;
-            const title = job ? "Local shifts and jobs in Bristol, Keynsham & Bath | NearTask" : "Local help wanted in Bristol, Keynsham & Bath | NearTask";
-            const description = job ? "Current shifts and local jobs near Bristol, Keynsham and Bath. Free to apply, no commission." : "People near Bristol, Keynsham and Bath looking for help with cleaning, gardens, moving and more. Free to offer, no commission.";
+            const title = job ? "Local shifts and jobs across the UK | NearTask" : "Local help wanted across the UK | NearTask";
+            const description = job ? "Current shifts and local jobs across the UK. Free to apply, no commission." : "People across the UK looking for help with cleaning, gardens, moving and more. Free to offer, no commission.";
             const items = rows.map((l) => `<li><a href="${pathOf(l)}"><b>${esc(l.title)}</b></a><br><span class="mute">${esc(dayText(l.date))} · ${esc(timeText(l))} · ${esc(l.area)} · ${esc(money(l.pay))}</span></li>`).join("\n");
             const body = `<h1>${job ? "Shifts and jobs near you" : "Help wanted near you"}</h1>
           <p class="mute">${rows.length} open ${rows.length === 1 ? "listing" : "listings"} · updated every hour</p>

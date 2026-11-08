@@ -1,7 +1,7 @@
 {
   "name": "NearTask – local work and help",
   "short_name": "NearTask",
-  "description": "Find local shifts and jobs, or get help at home: cleaning, repairs, garden, moving and more around Bristol, Keynsham and Bath.",
+  "description": "Find local shifts and jobs, or get help at home: cleaning, repairs, garden, moving and more, anywhere in the UK.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
