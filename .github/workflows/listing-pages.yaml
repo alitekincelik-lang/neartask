@@ -44,7 +44,7 @@ jobs:
             const i = process.argv.indexOf("--from");
             if (i > 0) return JSON.parse(readFileSync(process.argv[i + 1], "utf8"));
             const today = londonDate(Date.now());
-            const select = "id,kind,title,category,area,date,start_time,end_time,pay,description,requirements,positions,status,created_at,details,photo_url,booked_package,owner:profiles!listings_owner_id_fkey(name,verified,account_type)";
+            const select = "id,kind,title,category,area,date,start_time,end_time,pay,description,requirements,positions,status,created_at,details,photo_url,booked_package,owner:profiles!listings_owner_id_fkey(name:public_name,verified,account_type)";
             const q = new URLSearchParams({ select, status: "eq.open", booked_package: "is.null", date: "gte." + today, order: "date.asc,start_time.asc", limit: "1000" });
             const r = await fetch(`${SUPABASE_URL}/rest/v1/listings?${q}`, { headers: { apikey: ANON_KEY, Authorization: "Bearer " + ANON_KEY } });
             if (!r.ok) throw new Error("Supabase " + r.status + " " + (await r.text()));
