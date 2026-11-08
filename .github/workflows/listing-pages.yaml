@@ -37,7 +37,7 @@ jobs:
           const ANON_KEY = process.env.NT_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFheXhzZmFubGhlbGRxZXBlZ29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4ODE4NDgsImV4cCI6MjEwODQ1Nzg0OH0.G7ewYasDxILFL9Lxi11Zph8ps7HTuW8GcRD_0b8Fjmc";
           const OUT = process.cwd();
           const CATS = { hospitality: "Hospitality", retail: "Shops & retail", warehouse: "Warehouse & driving", cleaning: "Cleaning", repairs: "Repairs & trades", garden: "Garden", moving: "Moving & delivery", care: "Care & errands", family: "Childcare & pets", lessons: "Lessons & tutoring", beauty: "Beauty & wellbeing", events: "Events & parties", tech: "Tech & admin", auto: "Car & vehicle", other: "Other" };
-          const STATIC_PAGES = [["/", "1.0"], ["/jobs/", "0.8"], ["/help/", "0.6"], ["/privacy.html", "0.3"], ["/terms.html", "0.3"], ["/delete-account.html", "0.2"]];
+          const STATIC_PAGES = [["/", "1.0"], ["/jobs/", "0.8"], ["/help/", "0.6"], ["/employers.html", "0.5"], ["/privacy.html", "0.3"], ["/terms.html", "0.3"], ["/delete-account.html", "0.2"]];
 
           // ---------- data ----------
           async function load() {
