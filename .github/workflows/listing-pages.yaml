@@ -44,7 +44,7 @@ jobs:
             const i = process.argv.indexOf("--from");
             if (i > 0) return JSON.parse(readFileSync(process.argv[i + 1], "utf8"));
             const today = londonDate(Date.now());
-            const select = "id,kind,title,category,area,date,start_time,end_time,pay,description,requirements,positions,status,created_at,details,photo_url,booked_package,owner:profiles!listings_owner_id_fkey(name:public_name,verified,account_type)";
+            const select = "id,kind,title,category,area,lat,lng,date,start_time,end_time,pay,description,requirements,positions,status,created_at,details,photo_url,booked_package,owner:profiles!listings_owner_id_fkey(name:public_name,verified,account_type)";
             const q = new URLSearchParams({ select, status: "eq.open", booked_package: "is.null", date: "gte." + today, order: "date.asc,start_time.asc", limit: "1000" });
             const r = await fetch(`${SUPABASE_URL}/rest/v1/listings?${q}`, { headers: { apikey: ANON_KEY, Authorization: "Bearer " + ANON_KEY } });
             if (!r.ok) throw new Error("Supabase " + r.status + " " + (await r.text()));
@@ -198,6 +198,29 @@ jobs:
             return shell({ title, description, path, body, robots: rows.length ? "index,follow" : "noindex,follow" });
           }
 
+          // ---------- city pages (/jobs/in/<city>/) ----------
+          const CITIES = [["London", 51.5074, -0.1278], ["Birmingham", 52.4862, -1.8904], ["Manchester", 53.4808, -2.2426], ["Bristol", 51.4545, -2.5879],
+            ["Leeds", 53.8008, -1.5491], ["Liverpool", 53.4084, -2.9916], ["Glasgow", 55.8642, -4.2518], ["Edinburgh", 55.9533, -3.1883],
+            ["Cardiff", 51.4816, -3.1791], ["Belfast", 54.5973, -5.9301], ["Newcastle", 54.9783, -1.6178], ["Bath", 51.3811, -2.359]];
+          const CITY_MILES = 15;
+          const miles = (a, b, c, d) => { const R = 3958.8, r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(x)); };
+          function cityPage([name, lat, lng], jobs) {
+            const slug = name.toLowerCase(), path = `/jobs/in/${slug}/`;
+            const near = jobs.map((l) => ({ l, d: l.lat != null && l.lng != null ? miles(lat, lng, +l.lat, +l.lng) : Infinity })).filter((x) => x.d <= CITY_MILES).sort((a, b) => a.d - b.d);
+            const title = `Jobs in ${name} – local shifts and part-time work | NearTask`;
+            const description = `Local shifts, part-time jobs and help at home in and around ${name}. Free to apply, free to post, no commission.`;
+            const items = near.map(({ l, d }) => `<li><a href="${pathOf(l)}"><b>${esc(l.title)}</b></a><br><span class="mute">${esc(ownerName(l))} · ${esc(l.area)} · ${d.toFixed(1)} miles · ${esc(dayText(l.date))} · ${esc(money(l.pay))}</span></li>`).join("\n");
+            const others = CITIES.filter((c) => c[0] !== name).map((c) => `<a href="/jobs/in/${c[0].toLowerCase()}/">Jobs in ${c[0]}</a>`).join(" · ");
+            const body = `<h1>Jobs in ${esc(name)}</h1>
+          <p class="mute">${near.length} open ${near.length === 1 ? "job" : "jobs"} within ${CITY_MILES} miles of ${esc(name)} · updated every hour</p>
+          ${near.length ? `<ul class="list">\n${items}\n</ul>` : `<p>No open jobs near ${esc(name)} right now. New shifts are added all the time – set a free job alert in the app.</p>`}
+          <a class="btn" href="${SITE}/#/explore">Search jobs near you</a>
+          <h2>Hiring in ${esc(name)}?</h2>
+          <p>Post a shift or job for free and reach local people. No commission, ever. <a href="${SITE}/#/post">Post a free job</a></p>
+          <h2>Other cities</h2><p>${others}</p>`;
+            return { path, html: shell({ title, description, path, body, robots: near.length ? "index,follow" : "noindex,follow" }), count: near.length };
+          }
+
           // ---------- write ----------
           const rows = (await load()).filter((l) => l.status === "open" && !l.booked_package && endAt(l) > Date.now());
           const pages = rows.map(listingPage);
@@ -208,9 +231,13 @@ jobs:
             writeFileSync(join(d, "index.html"), indexPage(dir, rows.filter((l) => folder(l) === dir)));
           }
           for (const p of pages) writeFileSync(join(OUT, p.path.slice(1)), p.html);
+          const cityPages = CITIES.map((c) => cityPage(c, rows.filter((l) => folder(l) === "jobs")));
+          rmSync(join(OUT, "jobs", "in"), { recursive: true, force: true });
+          for (const c of cityPages) { const d = join(OUT, c.path.slice(1)); mkdirSync(d, { recursive: true }); writeFileSync(join(d, "index.html"), c.html); }
           const today = londonDate(Date.now());
           const urls = [...STATIC_PAGES.map(([u, pr]) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><priority>${pr}</priority></url>`),
-            ...pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${p.lastmod}</lastmod><priority>0.7</priority></url>`)];
+            ...pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${p.lastmod}</lastmod><priority>0.7</priority></url>`),
+            ...cityPages.filter((c) => c.count).map((c) => `  <url><loc>${SITE}${c.path}</loc><lastmod>${today}</lastmod><priority>0.6</priority></url>`)];
           writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
           console.log(`${pages.length} listing pages (${pages.filter((p) => p.path.startsWith("/jobs/")).length} jobs, ${pages.filter((p) => p.path.startsWith("/help/")).length} help)`);
 
