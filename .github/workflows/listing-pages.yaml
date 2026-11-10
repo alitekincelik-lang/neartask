@@ -201,7 +201,16 @@ jobs:
           // ---------- city pages (/jobs/in/<city>/) ----------
           const CITIES = [["London", 51.5074, -0.1278], ["Birmingham", 52.4862, -1.8904], ["Manchester", 53.4808, -2.2426], ["Bristol", 51.4545, -2.5879],
             ["Leeds", 53.8008, -1.5491], ["Liverpool", 53.4084, -2.9916], ["Glasgow", 55.8642, -4.2518], ["Edinburgh", 55.9533, -3.1883],
-            ["Cardiff", 51.4816, -3.1791], ["Belfast", 54.5973, -5.9301], ["Newcastle", 54.9783, -1.6178], ["Bath", 51.3811, -2.359]];
+            ["Cardiff", 51.4816, -3.1791], ["Belfast", 54.5973, -5.9301], ["Newcastle", 54.9783, -1.6178], ["Bath", 51.3811, -2.359],
+          ["Keynsham", 51.4135, -2.497]];
+          // Short local notes for the cities where NearTask started (facts only; no claims about how many jobs there are).
+          const CITY_NOTES = {
+            Bristol: "Bristol is the largest city in the South West. Shift work is common in hospitality around the Harbourside and city centre, in shops around Broadmead and Cabot Circus, and in warehouses and logistics around Avonmouth. Bristol Temple Meads and Bristol Parkway stations and the city bus network make it easy to work across BS postcodes.",
+            Bath: "Bath is a World Heritage city with a large visitor economy, so hotels, restaurants, cafés and shops hire all year and especially at weekends and in the run-up to Christmas. Bath Spa station is a few minutes from the centre, and trains run to Keynsham and Bristol in around 10 to 15 minutes.",
+            Keynsham: "Keynsham is a market town between Bristol and Bath (BS31). Local work includes hotels, pubs, restaurants and takeaways on and around the High Street and Bristol Road, care, cleaning and shop work. Keynsham station has direct trains to Bristol Temple Meads and Bath Spa, so jobs in both cities are within easy reach."
+          };
+          // UK minimum hourly pay from 1 April 2026 (GOV.UK). Update every April.
+          const PAY_RATES = [["21 and over (National Living Wage)", "£12.71"], ["18 to 20", "£10.85"], ["16 to 17", "£8.00"], ["Apprentice", "£8.00"]];
           const CITY_MILES = 15;
           const miles = (a, b, c, d) => { const R = 3958.8, r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(x)); };
           function cityPage([name, lat, lng], jobs) {
@@ -215,6 +224,15 @@ jobs:
           <p class="mute">${near.length} open ${near.length === 1 ? "job" : "jobs"} within ${CITY_MILES} miles of ${esc(name)} · updated every hour</p>
           ${near.length ? `<ul class="list">\n${items}\n</ul>` : `<p>No open jobs near ${esc(name)} right now. New shifts are added all the time – set a free job alert in the app.</p>`}
           <a class="btn" href="${SITE}/#/explore">Search jobs near you</a>
+          ${CITY_NOTES[name] ? `<h2>Working in ${esc(name)}</h2>\n          <p>${esc(CITY_NOTES[name])}</p>` : ""}
+          <h2>Popular shifts and part-time jobs</h2>
+          <p>Kitchen porter · Waiter and waitress · Bar staff · Barista · Chef · Housekeeping · Cleaning · Shop assistant · Warehouse and picking · Delivery driver · Care and support · Events staff</p>
+          <h2>Minimum pay in 2026</h2>
+          <p class="mute">From 1 April 2026, employers in ${esc(name)} and across the UK must pay at least:</p>
+          <dl class="facts card">${PAY_RATES.map(([a, r]) => `<dt>${a}</dt><dd>${r} an hour</dd>`).join("")}</dl>
+          <p class="mute">Source: GOV.UK National Minimum Wage rates. NearTask shows pay on every listing before you apply.</p>
+          <h2>How NearTask works</h2>
+          <p>Search by postcode or town and choose how far you want to travel (1 to 25 miles). Apply in one tap, chat with the employer in the app and agree the pay directly. It is free for job seekers and employers, with no commission.</p>
           <h2>Hiring in ${esc(name)}?</h2>
           <p>Post a shift or job for free and reach local people. No commission, ever. <a href="${SITE}/#/post">Post a free job</a></p>
           <h2>Other cities</h2><p>${others}</p>`;
