@@ -37,7 +37,7 @@ jobs:
           const ANON_KEY = process.env.NT_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFheXhzZmFubGhlbGRxZXBlZ29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4ODE4NDgsImV4cCI6MjEwODQ1Nzg0OH0.G7ewYasDxILFL9Lxi11Zph8ps7HTuW8GcRD_0b8Fjmc";
           const OUT = process.cwd();
           const CATS = { hospitality: "Hospitality", retail: "Shops & retail", warehouse: "Warehouse & driving", cleaning: "Cleaning", repairs: "Handyman & repairs", painting: "Painting & decorating", assembly: "Furniture assembly", garden: "Garden", moving: "Moving & delivery", care: "Care & errands", family: "Childcare & pets", lessons: "Lessons & tutoring", beauty: "Beauty & wellbeing", events: "Events & parties", tech: "Tech & admin", auto: "Car & vehicle", other: "Other" };
-          const STATIC_PAGES = [["/", "1.0"], ["/jobs/", "0.8"], ["/help/", "0.6"], ["/employers.html", "0.5"], ["/privacy.html", "0.3"], ["/terms.html", "0.3"], ["/delete-account.html", "0.2"]];
+          const STATIC_PAGES = [["/", "1.0"], ["/jobs/", "0.8"], ["/help/", "0.6"], ["/employers.html", "0.5"], ["/safety.html", "0.4"], ["/privacy.html", "0.3"], ["/terms.html", "0.3"], ["/delete-account.html", "0.2"]];
 
           // ---------- data ----------
           async function load() {
@@ -202,7 +202,19 @@ jobs:
           const CITIES = [["London", 51.5074, -0.1278], ["Birmingham", 52.4862, -1.8904], ["Manchester", 53.4808, -2.2426], ["Bristol", 51.4545, -2.5879],
             ["Leeds", 53.8008, -1.5491], ["Liverpool", 53.4084, -2.9916], ["Glasgow", 55.8642, -4.2518], ["Edinburgh", 55.9533, -3.1883],
             ["Cardiff", 51.4816, -3.1791], ["Belfast", 54.5973, -5.9301], ["Newcastle", 54.9783, -1.6178], ["Bath", 51.3811, -2.359],
-          ["Keynsham", 51.4135, -2.497]];
+          ["Keynsham", 51.4135, -2.497],
+          // More UK cities and large towns (draft 13 Nov 2026), so people searching "jobs in <town>" find NearTask.
+            ["Sheffield", 53.3811, -1.4701], ["Nottingham", 52.9548, -1.1581], ["Leicester", 52.6369, -1.1398], ["Coventry", 52.4068, -1.5197],
+            ["Bradford", 53.7960, -1.7594], ["Southampton", 50.9097, -1.4044], ["Portsmouth", 50.8198, -1.0880], ["Brighton", 50.8225, -0.1372],
+            ["Reading", 51.4543, -0.9781], ["Oxford", 51.7520, -1.2577], ["Cambridge", 52.2053, 0.1218], ["Milton Keynes", 52.0406, -0.7594],
+            ["Luton", 51.8787, -0.4200], ["Northampton", 52.2405, -0.9027], ["Derby", 52.9225, -1.4746], ["Stoke-on-Trent", 53.0027, -2.1794],
+            ["Wolverhampton", 52.5862, -2.1288], ["Plymouth", 50.3755, -4.1427], ["Exeter", 50.7184, -3.5339], ["Bournemouth", 50.7192, -1.8808],
+            ["Swindon", 51.5558, -1.7797], ["Gloucester", 51.8642, -2.2382], ["Cheltenham", 51.8994, -2.0783], ["Weston-super-Mare", 51.3460, -2.9770],
+            ["Swansea", 51.6214, -3.9436], ["Newport", 51.5842, -2.9977], ["Norwich", 52.6309, 1.2974], ["Peterborough", 52.5695, -0.2405],
+            ["York", 53.9600, -1.0873], ["Hull", 53.7676, -0.3274], ["Sunderland", 54.9069, -1.3838], ["Middlesbrough", 54.5742, -1.2350],
+            ["Aberdeen", 57.1497, -2.0943], ["Dundee", 56.4620, -2.9707]];
+          const citySlug = (n) => n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+          const catSlug = (c) => (CATS[c] || "Other").toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
           // Short local notes for the cities where NearTask started (facts only; no claims about how many jobs there are).
           const CITY_NOTES = {
             Bristol: "Bristol is the largest city in the South West. Shift work is common in hospitality around the Harbourside and city centre, in shops around Broadmead and Cabot Circus, and in warehouses and logistics around Avonmouth. Bristol Temple Meads and Bristol Parkway stations and the city bus network make it easy to work across BS postcodes.",
@@ -214,15 +226,36 @@ jobs:
           const CITY_MILES = 15;
           const miles = (a, b, c, d) => { const R = 3958.8, r = Math.PI / 180, x = Math.sin((c - a) * r / 2) ** 2 + Math.cos(a * r) * Math.cos(c * r) * Math.sin((d - b) * r / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(x)); };
           function cityPage([name, lat, lng], jobs) {
-            const slug = name.toLowerCase(), path = `/jobs/in/${slug}/`;
+            const slug = citySlug(name), path = `/jobs/in/${slug}/`;
             const near = jobs.map((l) => ({ l, d: l.lat != null && l.lng != null ? miles(lat, lng, +l.lat, +l.lng) : Infinity })).filter((x) => x.d <= CITY_MILES).sort((a, b) => a.d - b.d);
             const title = `Jobs in ${name} – local shifts and part-time work | NearTask`;
             const description = `Local shifts, part-time jobs and help at home in and around ${name}. Free to apply, free to post, no commission.`;
             const items = near.map(({ l, d }) => `<li><a href="${pathOf(l)}"><b>${esc(l.title)}</b></a><br><span class="mute">${esc(ownerName(l))} · ${esc(l.area)} · ${d.toFixed(1)} miles · ${esc(dayText(l.date))} · ${esc(money(l.pay))}</span></li>`).join("\n");
-            const others = CITIES.filter((c) => c[0] !== name).map((c) => `<a href="/jobs/in/${c[0].toLowerCase()}/">Jobs in ${c[0]}</a>`).join(" · ");
+            const others = CITIES.filter((c) => c[0] !== name).map((c) => `<a href="/jobs/in/${citySlug(c[0])}/">Jobs in ${c[0]}</a>`).join(" · ");
+            // Never an empty page: when nothing is open nearby, show open jobs up to 50 miles away, with the distance.
+            const nearest = near.length ? [] : jobs.map((l) => ({ l, d: l.lat != null && l.lng != null ? miles(lat, lng, +l.lat, +l.lng) : Infinity })).filter((x) => x.d <= 50).sort((a, b) => a.d - b.d).slice(0, 5);
+            const nearestItems = nearest.map(({ l, d }) => `<li><a href="${pathOf(l)}"><b>${esc(l.title)}</b></a><br><span class="mute">${esc(ownerName(l))} · ${esc(l.area)} · ${Math.round(d)} miles away · ${esc(dayText(l.date))} · ${esc(money(l.pay))}</span></li>`).join("\n");
+            // Jobs by type in this city: each type with at least one open job nearby gets its own page.
+            const byCat = {};
+            for (const x of near) (byCat[x.l.category] ||= []).push(x);
+            const catLinks = Object.keys(byCat).sort().map((c) => `<a href="${path}${catSlug(c)}/">${esc(CATS[c] || "Other")} (${byCat[c].length})</a>`).join(" · ");
+            const catPages = Object.entries(byCat).map(([c, list]) => {
+              const cpath = `${path}${catSlug(c)}/`, label = CATS[c] || "Other";
+              const citems = list.map(({ l, d }) => `<li><a href="${pathOf(l)}"><b>${esc(l.title)}</b></a><br><span class="mute">${esc(ownerName(l))} · ${esc(l.area)} · ${d.toFixed(1)} miles · ${esc(dayText(l.date))} · ${esc(money(l.pay))}</span></li>`).join("\n");
+              const cbody = `<p class="mute"><a href="${path}">Jobs in ${esc(name)}</a> › ${esc(label)}</p>
+          <h1>${esc(label)} jobs in ${esc(name)}</h1>
+          <p class="mute">${list.length} open ${list.length === 1 ? "job" : "jobs"} within ${CITY_MILES} miles of ${esc(name)} · updated every hour</p>
+          <ul class="list">\n${citems}\n</ul>
+          <a class="btn" href="${SITE}/#/explore">Search jobs near you</a>
+          <h2>Hiring ${esc(label.toLowerCase())} staff in ${esc(name)}?</h2>
+          <p>Post a shift or job for free and reach local people. No commission, ever. <a href="${SITE}/#/post">Post a free job</a></p>`;
+              return { path: cpath, count: list.length, html: shell({ title: `${label} jobs in ${name} | NearTask`, description: `Open ${label.toLowerCase()} shifts and part-time jobs in and around ${name}. Free to apply, free to post, no commission.`, path: cpath, body: cbody, robots: "index,follow" }) };
+            });
             const body = `<h1>Jobs in ${esc(name)}</h1>
           <p class="mute">${near.length} open ${near.length === 1 ? "job" : "jobs"} within ${CITY_MILES} miles of ${esc(name)} · updated every hour</p>
-          ${near.length ? `<ul class="list">\n${items}\n</ul>` : `<p>No open jobs near ${esc(name)} right now. New shifts are added all the time – set a free job alert in the app.</p>`}
+          ${near.length ? `<ul class="list">\n${items}\n</ul>` : `<p>No open jobs within ${CITY_MILES} miles of ${esc(name)} right now. New shifts are added all the time – set a free job alert in the app.</p>`}
+          ${catLinks ? `<p><b>Jobs by type:</b> ${catLinks}</p>` : ""}
+          ${nearestItems ? `<h2>Nearest open jobs</h2>\n          <ul class="list">\n${nearestItems}\n</ul>` : ""}
           <a class="btn" href="${SITE}/#/explore">Search jobs near you</a>
           ${CITY_NOTES[name] ? `<h2>Working in ${esc(name)}</h2>\n          <p>${esc(CITY_NOTES[name])}</p>` : ""}
           <h2>Popular shifts and part-time jobs</h2>
@@ -236,7 +269,7 @@ jobs:
           <h2>Hiring in ${esc(name)}?</h2>
           <p>Post a shift or job for free and reach local people. No commission, ever. <a href="${SITE}/#/post">Post a free job</a></p>
           <h2>Other cities</h2><p>${others}</p>`;
-            return { path, html: shell({ title, description, path, body, robots: near.length ? "index,follow" : "noindex,follow" }), count: near.length };
+            return { path, html: shell({ title, description, path, body, robots: near.length ? "index,follow" : "noindex,follow" }), count: near.length, catPages };
           }
 
           // ---------- write ----------
@@ -251,11 +284,12 @@ jobs:
           for (const p of pages) writeFileSync(join(OUT, p.path.slice(1)), p.html);
           const cityPages = CITIES.map((c) => cityPage(c, rows.filter((l) => folder(l) === "jobs")));
           rmSync(join(OUT, "jobs", "in"), { recursive: true, force: true });
-          for (const c of cityPages) { const d = join(OUT, c.path.slice(1)); mkdirSync(d, { recursive: true }); writeFileSync(join(d, "index.html"), c.html); }
+          for (const c of cityPages) for (const p of [c, ...c.catPages]) { const d = join(OUT, p.path.slice(1)); mkdirSync(d, { recursive: true }); writeFileSync(join(d, "index.html"), p.html); }
           const today = londonDate(Date.now());
           const urls = [...STATIC_PAGES.map(([u, pr]) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><priority>${pr}</priority></url>`),
             ...pages.map((p) => `  <url><loc>${SITE}${p.path}</loc><lastmod>${p.lastmod}</lastmod><priority>0.7</priority></url>`),
-            ...cityPages.filter((c) => c.count).map((c) => `  <url><loc>${SITE}${c.path}</loc><lastmod>${today}</lastmod><priority>0.6</priority></url>`)];
+            ...cityPages.filter((c) => c.count).map((c) => `  <url><loc>${SITE}${c.path}</loc><lastmod>${today}</lastmod><priority>0.6</priority></url>`),
+            ...cityPages.flatMap((c) => c.catPages).map((c) => `  <url><loc>${SITE}${c.path}</loc><lastmod>${today}</lastmod><priority>0.5</priority></url>`)];
           writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
           console.log(`${pages.length} listing pages (${pages.filter((p) => p.path.startsWith("/jobs/")).length} jobs, ${pages.filter((p) => p.path.startsWith("/help/")).length} help)`);
 
