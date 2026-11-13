@@ -43,7 +43,8 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 - Drive "2026-10-09 – OMH Sosyal Medya/Coffee and Cake" – OMH_Coffee_Cake_Fotograf_01..10 (gerçek).
 - Drive "Steak Night" – onaylı afişler (Steak_Night_Poster_01/02).
 - Videolar: mutfakta roast/gravy videosu (Reel 13 Kasım), tören odası ve avizeli salon videoları (Reel 18 Kasım).
-- EKSİK: steak tabağı, Noel süsleri/yemeği, bar, oda fotoğrafları.
+- `social/omh/photos/steak-01..04.jpg` – iki rump steak tabağı, chips sepeti, salata (Eylül 2026). 19 Kasım Steak Night tasarımında steak-01 kullanıldı.
+- EKSİK: Noel süsleri/yemeği, bar, oda fotoğrafları.
 
 ## 5. Onaylı paylaşımlar
 | Tarih | İçerik | Dosya |
@@ -54,6 +55,7 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 | 16 Kas | Coffee & Cake (bar önü) | approved/2026-11-16.jpg |
 | 17 Kas | Coffee & Cake (pencere kenarı) | approved/2026-11-17.jpg |
 | 18 Kas | Weddings & Events Reel | approved/2026-11-18.mp4 |
+| 19 Kas | Steak Night for two £44 | approved/2026-11-19.jpg |
 | 21 Kas | Sunday Roast Tomorrow | approved/2026-11-21.jpg |
 | 22 Kas | Sunday Roast is served today | approved/2026-11-22.jpg |
 Yedek (onaysız, hazır): Coffee & Cake Reel (4 gerçek fotoğraf, müzikli) – `social/omh/photos/coffee-cake-reel-spare.mp4`.
