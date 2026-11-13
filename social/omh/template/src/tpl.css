@@ -1,0 +1,22 @@
+@font-face{font-family:PF;src:url(../f/playfair-display/files/playfair-display-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:PF;src:url(../f/playfair-display/files/playfair-display-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:CG;src:url(../f/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:CGI;src:url(../f/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;background:#fdf6ec;position:relative;overflow:hidden;font-family:CG,serif;color:#3a2a24;font-variant-numeric:lining-nums}
+.photo{position:absolute;left:0;top:0;width:1080px;height:860px;background-size:cover;background-position:center 30%}
+.photo:after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;background:linear-gradient(rgba(253,246,236,0),#fdf6ec)}
+.frame{position:absolute;inset:12px;border:3px solid #c9a35a;pointer-events:none;z-index:5}
+.mid{position:absolute;left:0;right:0;top:800px;text-align:center;z-index:2}
+.h{font-family:PF;font-weight:800;color:#6e1520;font-size:88px;line-height:1}
+.s{font-family:CGI;color:#5b4322;font-size:58px;line-height:1;margin-top:0}
+.rule{display:flex;align-items:center;gap:22px;justify-content:center;margin:12px 70px 0;color:#6e1520;font-family:CG;font-weight:600;font-size:34px;letter-spacing:4px}
+.rule:before,.rule:after{content:"";flex:1;height:2px;background:#c9a35a}
+.t{font-family:CG;font-weight:600;font-size:33px;margin-top:6px;line-height:1.15;color:#3a2a24}
+.foot{position:absolute;left:0;bottom:0;width:1080px}
+@font-face{font-family:JS;src:url(../f2/fontsource-josefin-sans/package/files/josefin-sans-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:PFI;src:url(../f2/fontsource-playfair-display/package/files/playfair-display-latin-800-italic.woff2);font-weight:800}
+.s b{font-family:PF;font-weight:800;font-style:normal;color:#6e1520}
+.vA .h{font-family:PFI;font-weight:800;letter-spacing:1px}
+.vB .h{font-family:JS;font-weight:700;letter-spacing:3px;font-size:84px;padding-top:0}
+.h{font-family:JS!important;font-weight:700!important;letter-spacing:3px;font-size:84px!important}
