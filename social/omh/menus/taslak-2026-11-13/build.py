@@ -71,6 +71,25 @@ body{{font-family:CG,serif;color:var(--ink);font-variant-numeric:lining-nums;-we
 .info li{{margin:.6mm 0}}
 .info .lead{{text-align:center;font-style:italic;font-size:12.2pt;color:var(--mute);margin-top:3mm}}
 .info .end{{text-align:center;font-family:PF;font-weight:600;font-style:normal;color:var(--bur);font-size:12.5pt;margin-top:6mm}}
+/* === TEK TİP: tek yazı ailesi (Playfair Display), sabit puntolar, beyaz zemin === */
+@font-face{{font-family:PFR;src:url({F}/playfair-display/files/playfair-display-latin-400-normal.woff2)}}
+@font-face{{font-family:PFR;src:url({F}/playfair-display/files/playfair-display-latin-400-italic.woff2);font-style:italic}}
+:root{{--bg:#ffffff}}
+body,.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.foot .sc{{font-family:PFR,serif!important}}
+.title{{font-size:18pt!important}}
+.sec h2,.info h4,.box h3,.lbl,.foot .ad{{font-family:PSC!important}}
+.sec h2,.info h4,.box h3{{font-size:13pt!important}}
+.prices,.pl b{{font-size:13pt!important}}
+.n,.ci,.p,.sup,.end,.box p b{{font-size:11pt!important}}
+.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.foot .sc{{font-size:10pt!important}}
+.tag,.lbl,.foot .ad{{font-size:7.5pt!important}}
+.box{{background:#fff!important}}
+.s1 .it{{padding:5.9mm 0!important}} .s3 .it{{padding:5.6mm 0!important}} .s3 .sec{{margin:11mm 0 4mm!important}} .s2 .it{{padding:4.3mm 0!important}} .pg2 .it{{padding:2mm 0!important}}
+.info:not(.ginfo) h4{{margin-top:9.5mm!important}} .ginfo h4{{margin-top:7.5mm!important}} .ginfo p{{margin-bottom:3.4mm!important}}
+.tag{{font-family:PFR,serif!important;font-style:normal;letter-spacing:.8pt}}
+.sec h2:before,.sec h2:after{{content:""!important;display:inline-block;width:1.5mm;height:1.5mm;background:var(--gold);transform:rotate(45deg);top:-1.4pt!important}}
+.prices span{{display:inline-block;width:2mm;height:2mm;background:var(--gold);transform:rotate(45deg);font-size:0!important}}
+.logo{{width:58mm!important}} .logo.sm{{width:44mm!important}}
 """
 
 ADDR = '5 Bristol Road · Keynsham · BS31 2BA · 0117 986 3107'
