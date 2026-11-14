@@ -1,7 +1,7 @@
 import html, base64, pathlib
 H = html.escape
 F = 'node_modules/@fontsource'
-LOGO = 'data:image/png;base64,' + base64.b64encode(open('omh-logo.png','rb').read()).decode()
+LOGO = 'data:image/png;base64,' + base64.b64encode(open('omh-logo-hr.png','rb').read()).decode()
 
 CSS = f"""
 @font-face{{font-family:PF;src:url({F}/playfair-display/files/playfair-display-latin-600-normal.woff2);font-weight:600}}
@@ -217,3 +217,72 @@ SET_PAGES = [s1, s2, s3, info]
 pathlib.Path('evening.html').write_text(doc('Evening A La Carte Menu', [page(''.join(p), SC, 'tight'+(' pg2' if i else '')) for i,p in enumerate(EVE_PAGES)]))
 pathlib.Path('setmenu.html').write_text(doc('Set Menu 2026', [page(''.join(p), SF, ['loose s1','loose s2','s3',''][i]) for i,p in enumerate(SET_PAGES)]))
 print('ok')
+
+# ---------------- COLD BUFFET MENU 2026 ----------------
+CB_CSS = """<style>
+.cb .ci{text-align:center;font-family:PF;font-weight:600;font-size:12pt;color:var(--ink);padding:1.3mm 0;letter-spacing:.2pt}
+.cb .ci .tag{font-size:9pt}
+.cb .cd{display:block;width:1.6mm;height:1.6mm;background:var(--gold);transform:rotate(45deg);margin:0 auto;opacity:.75}
+.cb .pl{text-align:center;margin:0 0 2.5mm}
+.cb .pl b{font-family:PF;font-weight:700;color:var(--bur);font-size:17pt;display:block}
+.cb .pl i{font-size:11.8pt;color:var(--mute)}
+.cb .lbl{text-align:center;font-family:PSC;font-weight:700;font-size:9.6pt;letter-spacing:2.4pt;color:var(--gold);margin:1mm 0 1mm}
+.cb .sp{display:block;font-family:CG;font-style:italic;font-weight:600;font-size:10.8pt;color:var(--bur);margin-top:.6mm;letter-spacing:0}
+.cb .logo{width:74mm} .cb .title{font-size:21pt;margin-top:6mm}
+.cb .sec{margin:6.5mm 0 2.5mm}
+.ginfo p{font-size:11.7pt;line-height:1.36;margin-bottom:1.6mm}
+.ginfo h4{margin-top:4.6mm}
+</style>"""
+def ci(name, tag='', note=''):
+    t = f'<span class="tag">{H(tag)}</span>' if tag else ''
+    n = f'<span class="sp">{H(note)}</span>' if note else ''
+    return f'<div class="ci">{H(name)}{t}{n}</div>'
+def dots(items):
+    return '<i class="cd"></i>'.join(items)
+cb1 = [CB_CSS, f'<img class="logo" src="{LOGO}">',
+       '<div class="title">Cold Buffet Menu 2026</div>',
+       '<div class="orn"><i></i></div>',
+       sec('One Course'),
+       '<div class="pl"><b>£28.00 per head</b><i>including the selection listed below</i></div>',
+       '<div class="lbl">Menu Selection</div>',
+       dots([ci('Platter of Smoked Salmon with Capers and Lemons'),
+             ci('Selection of Home-Made Breads', 'V'),
+             ci('Olives with Balsamic and Oils', 'V'),
+             ci('Pastry Savouries with Meat & Vegetable Fillings', 'V'),
+             ci('New Potatoes with Rosemary & Garlic', 'V'),
+             ci('Cold Meat Platter'),
+             ci("Selection of Chef's Homemade Salad", 'V'),
+             ci('Homemade Red Onion and Sage Sausage Rolls'),
+             ci('Barbecue Chicken Drumsticks')]),
+       sec('Two Course'),
+       '<div class="pl"><b>£31.50 per head</b><i>please select two choices from the dessert menu</i></div>',
+       dots([ci('Profiteroles with Chocolate Fondant'),
+             ci('Chocolate Brownie'),
+             ci('Fresh Fruit'),
+             ci('Scones, Jam & Clotted Cream'),
+             ci('A Selection of Local Cheeses, Biscuits, Celery, Grapes & Apple Platter', '',
+                'There is a supplement of £3.25 per head if the cheese platter is one of your chosen desserts')]),
+       '<div class="grow"></div>',
+       '<div class="note" style="margin-bottom:1mm">(V) Vegetarian</div>']
+cb2 = [CB_CSS, f'<img class="logo sm" src="{LOGO}">',
+       '<div class="title" style="font-size:16pt">General Information</div>',
+       '<div class="orn"><i></i></div>',
+       '<div class="info ginfo">',
+       '<p class="lead">Thank you for choosing us as a venue to host your event. Please read the information below that applies to this menu. If you have any questions, please do not hesitate to contact us.</p>',
+       '<h4>Menu</h4>',
+       '<p>We require the final number that we are catering for, along with any allergies or dietary requirements, 7 days prior to the booking.</p>',
+       '<p>Should you require any allergen or dietary information, please contact the hotel directly and we can assist with your menu choices.</p>',
+       '<h4>Drinks</h4>',
+       '<p>Please make us aware if you will be running a bar tab for your guests. We will require a card to be held behind the bar to run a tab.</p>',
+       '<p>Wine lists/bottle prices can be provided on request. Please note drinks prices can fluctuate.</p>',
+       '<h4>Deposit &amp; Payment</h4>',
+       '<p>This menu requires a non-refundable deposit of £10 per head to secure the date. Once a provisional booking has been made, we will give you a deadline for a date that a deposit must be paid by, or the booking will be cancelled and offered to another group.</p>',
+       '<p>Once we know the final number that we are catering for, we will contact you to make the final payment. Should any of your guests cancel the food can only be refunded providing no preparation has already taken place.</p>',
+       '<h4>Exclusivity</h4>',
+       '<p>Please note exclusivity of the function room can only be offered to groups of 25 and over. If you would like exclusivity of the function room with less than this number, the remaining charges would be added to your bill. Exclusivity of the restaurant can be offered to groups of 20 and over.</p>',
+       '<h4>Decorations</h4>',
+       '<p>Only bio-degradable confetti is permitted on-site. We DO NOT allow any loose balloons because this is a trip hazard to staff, or anything stuck to the walls because it ruins the paint. Photos/tied balloons can be hung from the window frames and mantelpieces. Failure to comply may lead to damage charges. Thank you for your cooperation.</p>',
+       '<p class="end">We look forward to hosting your event.</p>',
+       '</div>']
+pathlib.Path('coldbuffet.html').write_text(doc('Cold Buffet Menu 2026', [page(''.join(cb1), SF, 'cb'), page(''.join(cb2), SF, 'cb')]))
+print('cb ok')
