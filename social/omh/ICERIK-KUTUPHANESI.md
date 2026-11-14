@@ -12,6 +12,12 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 - Kişi isimleri görünen fotoğraflar (ör. "Joe and Lucy" konuk defteri) paylaşılmaz.
 - Ücretli hiçbir şey (boost, reklam) yapılmaz.
 
+## 1b. Ali Bey'in 14 Kasım 2026 talimatları
+- Sosyal medyayı çok aktif kullan, takipçi sayısını artır.
+- Her paylaşımda adres linki (Get directions Google Maps linki) mutlaka olsun.
+- Yapılan yorumlara cevap verilsin (otel adına, İngilizce, sıcak, imza "– The Old Manor House Hotel Team").
+- Ali Bey müzikli Reel'leri seviyor ("Müzik eklersen daha güzel olur"): mümkünse fotoğraf yerine kendi ürettiğimiz telifsiz müzikli Reel.
+
 ## 2. Tasarım şablonu (Ali Bey onaylı)
 - Fotoğraf post: 1080x1350. Üstte ~%65 gerçek fotoğraf (alt kenarda kreme yumuşak geçiş), hemen altında küçük yazı bandı, en altta sabit footer.
 - Başlık: düz, modern, aralıklı büyük harf (Josefin Sans 700, bordo #6e1520) – Ali Bey "2" seçeneğini seçti.
@@ -56,8 +62,10 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 | 17 Kas | Coffee & Cake (pencere kenarı) | approved/2026-11-17.jpg |
 | 18 Kas | Weddings & Events Reel | approved/2026-11-18.mp4 |
 | 19 Kas | Steak Night for two £44 | approved/2026-11-19.jpg |
+| 20 Kas | Friday Night – steaks from £22 (Reel, müzikli; steak-02) | approved/2026-11-20.mp4 |
 | 21 Kas | Sunday Roast Tomorrow | approved/2026-11-21.jpg |
 | 22 Kas | Sunday Roast is served today | approved/2026-11-22.jpg |
+STOK (Ali Bey 14 Kasım: "Stokta bulunsun, ihtiyaç olursa kullanırsın" – onaylı, istenen güne kopyalanabilir): `stock/christmas-parties-reel.mp4` + `stock/christmas-parties.jpg` + `stock/christmas-parties.txt` (Christmas Parties, events-room-02, festive menu 27 Kas–24 Ara). 27 Kasım–24 Aralık arasındaki bir Noel gününde kullan.
 Yedek (onaysız, hazır): Coffee & Cake Reel (4 gerçek fotoğraf, müzikli) – `social/omh/photos/coffee-cake-reel-spare.mp4`.
 Daha önce paylaşılmış: Christmas Festive Menu postu (gece binası), Christmas menü albümü (3 sayfa), Steak Night 12 Kasım.
 
