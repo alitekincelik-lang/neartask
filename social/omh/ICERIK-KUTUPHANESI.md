@@ -74,3 +74,4 @@ Daha önce paylaşılmış: Christmas Festive Menu postu (gece binası), Christm
 ## Menüler (social/omh/menus/)
 - `menus/cold-buffet-menu-2026.md` – Cold Buffet Menu 2026 (One Course £28.00, Two Course £31.50, peynir tabağı +£3.25/kişi) ve "General Information" metni aynen; kaynak ekran görüntüleri `menus/kaynak/` (Ali Bey, 14 Kasım 2026). Bu General Information metni gruplara yönelik tüm menülerde gerçek dil kaynağı.
 - `menus/taslak-2026-11-13/` – Evening A La Carte ve Set Menu 2026 yeniden tasarım taslakları (PDF + PNG + build.py). Onay bekliyor.
+- `review-card/omh-google-review-card.png` – "Thank You for Dining With Us" Google yorum kartı (Ali Bey'in OLD-GOOGLECARD.pdf'inden, 14 Kasım 2026). QR → https://g.page/r/CeyUrIuXWbZZEBM/review (test edildi). Menülerde boş alan varsa bu kart konur.
