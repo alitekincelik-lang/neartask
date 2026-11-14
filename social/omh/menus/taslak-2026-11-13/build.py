@@ -4,19 +4,19 @@ F = 'node_modules/@fontsource'
 LOGO = 'data:image/png;base64,' + base64.b64encode(open('omh-logo-hr.png','rb').read()).decode()
 
 CSS = f"""
-@font-face{{font-family:PF;src:url({F}/playfair-display/files/playfair-display-latin-600-normal.woff2);font-weight:600}}
-@font-face{{font-family:PF;src:url({F}/playfair-display/files/playfair-display-latin-700-normal.woff2);font-weight:700}}
-@font-face{{font-family:PFI;src:url({F}/playfair-display/files/playfair-display-latin-400-italic.woff2)}}
-@font-face{{font-family:PSC;src:url({F}/playfair-display-sc/files/playfair-display-sc-latin-700-normal.woff2);font-weight:700}}
-@font-face{{font-family:CG;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2);font-weight:500}}
-@font-face{{font-family:CG;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-700-normal.woff2);font-weight:700}}
-@font-face{{font-family:CG;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2);font-style:italic;font-weight:500}}
-@font-face{{font-family:CG;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-600-italic.woff2);font-style:italic;font-weight:600}}
+@font-face{{font-family:SS;src:url({F}/playfair-display/files/playfair-display-latin-600-normal.woff2);font-weight:600}}
+@font-face{{font-family:SS;src:url({F}/playfair-display/files/playfair-display-latin-700-normal.woff2);font-weight:700}}
+@font-face{{font-family:SS;src:url({F}/playfair-display/files/playfair-display-latin-400-italic.woff2)}}
+@font-face{{font-family:SS;src:url({F}/playfair-display-sc/files/playfair-display-sc-latin-700-normal.woff2);font-weight:700}}
+@font-face{{font-family:SS;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2);font-weight:500}}
+@font-face{{font-family:SS;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-700-normal.woff2);font-weight:700}}
+@font-face{{font-family:SS;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2);font-style:italic;font-weight:500}}
+@font-face{{font-family:SS;src:url({F}/cormorant-garamond/files/cormorant-garamond-latin-600-italic.woff2);font-style:italic;font-weight:600}}
 @page{{size:A4;margin:0}}
 :root{{--bg:#fbf5ea;--bur:#741822;--gold:#b8924a;--ink:#2f2420;--mute:#5c4a3e;--red:#b3121c}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{background:var(--bg)}}
-body{{font-family:CG,serif;color:var(--ink);font-variant-numeric:lining-nums;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+body{{font-family:SS,serif;color:var(--ink);font-variant-numeric:lining-nums;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 .page{{width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page}}
 .page:last-child{{page-break-after:auto;break-after:auto}}
 .frame{{position:absolute;inset:7mm;border:1.4pt solid var(--gold)}}
@@ -24,7 +24,7 @@ body{{font-family:CG,serif;color:var(--ink);font-variant-numeric:lining-nums;-we
 .in{{position:absolute;left:19mm;right:19mm;top:15mm;bottom:22mm;display:flex;flex-direction:column}}
 .logo{{display:block;margin:0 auto;width:62mm;height:auto}}
 .logo.sm{{width:46mm}}
-.title{{font-family:PSC;font-weight:700;color:var(--bur);text-align:center;font-size:19pt;letter-spacing:3pt;margin-top:4.5mm}}
+.title{{font-family:SS;font-weight:700;color:var(--bur);text-align:center;font-size:19pt;letter-spacing:3pt;margin-top:4.5mm}}
 .sub{{text-align:center;font-style:italic;font-size:12pt;color:var(--mute);margin-top:1mm}}
 .sub b{{font-style:normal;font-weight:700;color:var(--ink)}}
 .note{{text-align:center;font-size:10.2pt;line-height:1.25;color:var(--mute);margin:2.2mm 6mm 0;font-style:italic}}
@@ -33,28 +33,28 @@ body{{font-family:CG,serif;color:var(--ink);font-variant-numeric:lining-nums;-we
 .orn i{{width:2.2mm;height:2.2mm;background:var(--gold);transform:rotate(45deg)}}
 .sec{{display:flex;align-items:center;gap:4mm;margin:5mm 0 2mm;break-inside:avoid}}
 .sec:before,.sec:after{{content:"";flex:1;height:.6pt;background:var(--gold)}}
-.sec h2{{font-family:PSC;font-weight:700;color:var(--bur);font-size:14pt;letter-spacing:2.4pt;white-space:nowrap}}
+.sec h2{{font-family:SS;font-weight:700;color:var(--bur);font-size:14pt;letter-spacing:2.4pt;white-space:nowrap}}
 .sec h2:before,.sec h2:after{{content:"\\25C6";color:var(--gold);font-size:6pt;vertical-align:middle;margin:0 2.4mm;position:relative;top:-1pt}}
 .intro{{text-align:center;font-style:italic;font-size:10.8pt;color:var(--mute);line-height:1.25;margin:-.5mm 4mm 2mm}}
 .intro b{{font-style:normal;color:var(--bur)}}
 .it{{display:flex;align-items:baseline;gap:5mm;padding:1.25mm 0;break-inside:avoid}}
 .it .t{{flex:1;min-width:0}}
-.n{{font-family:PF;font-weight:600;font-size:11pt;color:var(--ink);letter-spacing:.15pt}}
+.n{{font-family:SS;font-weight:600;font-size:11pt;color:var(--ink);letter-spacing:.15pt}}
 .d{{font-style:italic;font-size:11.2pt;color:var(--mute);line-height:1.2;margin-top:.3mm}}
-.tag{{font-family:CG;font-weight:700;font-size:8.6pt;color:var(--gold);letter-spacing:.6pt;margin-left:1.6mm;white-space:nowrap}}
-.p{{font-family:PF;font-weight:600;font-size:11pt;color:var(--bur);white-space:nowrap}}
+.tag{{font-family:SS;font-weight:700;font-size:8.6pt;color:var(--gold);letter-spacing:.6pt;margin-left:1.6mm;white-space:nowrap}}
+.p{{font-family:SS;font-weight:600;font-size:11pt;color:var(--bur);white-space:nowrap}}
 .sup{{font-style:italic;font-weight:600;font-size:10.2pt;color:var(--bur);white-space:nowrap}}
 .box{{border:.6pt solid var(--gold);background:rgba(184,146,74,.08);padding:3.4mm 6mm 3.6mm;text-align:center;margin-top:4.5mm;break-inside:avoid}}
-.box h3{{font-family:PSC;font-weight:700;color:var(--bur);font-size:12.5pt;letter-spacing:2pt;margin-bottom:1.2mm}}
+.box h3{{font-family:SS;font-weight:700;color:var(--bur);font-size:12.5pt;letter-spacing:2pt;margin-bottom:1.2mm}}
 .box p{{font-size:11.4pt;line-height:1.28;color:var(--ink)}}
-.box p b{{color:var(--bur);font-family:PF;font-weight:600;font-size:10.6pt}}
+.box p b{{color:var(--bur);font-family:SS;font-weight:600;font-size:10.6pt}}
 .red{{color:var(--red);text-align:center;font-weight:700;font-style:italic;font-size:11pt;line-height:1.25;margin:3mm 4mm 0}}
-.prices{{display:flex;justify-content:center;gap:9mm;margin-top:3mm;font-family:PF;font-weight:600;color:var(--bur);font-size:13.5pt}}
+.prices{{display:flex;justify-content:center;gap:9mm;margin-top:3mm;font-family:SS;font-weight:600;color:var(--bur);font-size:13.5pt}}
 .prices span{{color:var(--gold);font-size:10pt;align-self:center}}
 .mnote{{text-align:center;font-style:italic;font-size:10.8pt;color:var(--mute);margin:1.5mm 0 1mm}}
 .foot{{position:absolute;left:19mm;right:19mm;bottom:12.5mm;text-align:center;font-size:9.6pt;color:var(--mute)}}
 .foot .sc{{font-style:italic;font-size:10.4pt;color:var(--ink)}}
-.foot .ad{{font-family:PSC;font-weight:700;font-size:7.4pt;letter-spacing:1.4pt;color:var(--gold);margin-top:.8mm}}
+.foot .ad{{font-family:SS;font-weight:700;font-size:7.4pt;letter-spacing:1.4pt;color:var(--gold);margin-top:.8mm}}
 .grow{{flex:1}}
 .tight .in{{left:17mm;right:17mm;top:13.5mm}}
 .tight .logo{{width:46mm}} .tight .note{{margin-top:1.6mm}} .tight .logo.sm{{width:42mm}}
@@ -65,19 +65,19 @@ body{{font-family:CG,serif;color:var(--ink);font-variant-numeric:lining-nums;-we
 .tight .orn{{margin-top:2.4mm}}
 .boxes{{display:flex;gap:4mm}} .boxes .box{{flex:1;display:flex;flex-direction:column;justify-content:center}}
 .loose .it{{padding:2.3mm 0}} .pg2 .it{{padding:1.72mm 0}} .pg2 .sec{{margin:5mm 0 2mm}} .s1 .it{{padding:4.1mm 0}} .s1 .logo{{width:76mm}} .s1 .sec{{margin:12mm 0 3mm}} .s1 .title{{font-size:22pt;margin-top:6mm}} .s2 .it{{padding:3.2mm 0}} .s3 .it{{padding:3.7mm 0}} .s3 .sec{{margin:9mm 0 3mm}} .s3 .d{{font-size:11.8pt}} .s3 .n{{font-size:11.6pt}} .loose .sec{{margin:7mm 0 3mm}} .loose .d{{font-size:11.8pt}} .loose .n{{font-size:11.6pt}}
-.info h4{{font-family:PSC;font-weight:700;color:var(--bur);font-size:11.8pt;letter-spacing:1.6pt;margin:6.6mm 0 1.4mm}}
+.info h4{{font-family:SS;font-weight:700;color:var(--bur);font-size:11.8pt;letter-spacing:1.6pt;margin:6.6mm 0 1.4mm}}
 .info p,.info li{{font-size:12pt;line-height:1.38;color:var(--ink)}}
 .info ul{{margin-left:5mm}}
 .info li{{margin:.6mm 0}}
 .info .lead{{text-align:center;font-style:italic;font-size:12.2pt;color:var(--mute);margin-top:3mm}}
-.info .end{{text-align:center;font-family:PF;font-weight:600;font-style:normal;color:var(--bur);font-size:12.5pt;margin-top:6mm}}
+.info .end{{text-align:center;font-family:SS;font-weight:600;font-style:normal;color:var(--bur);font-size:12.5pt;margin-top:6mm}}
 /* === TEK TİP: tek yazı ailesi (Playfair Display), sabit puntolar, beyaz zemin === */
-@font-face{{font-family:PFR;src:url({F}/playfair-display/files/playfair-display-latin-400-normal.woff2)}}
-@font-face{{font-family:PFR;src:url({F}/playfair-display/files/playfair-display-latin-400-italic.woff2);font-style:italic}}
+@font-face{{font-family:SS;src:url({F}/playfair-display/files/playfair-display-latin-400-normal.woff2)}}
+@font-face{{font-family:SS;src:url({F}/playfair-display/files/playfair-display-latin-400-italic.woff2);font-style:italic}}
 :root{{--bg:#ffffff}}
-body,.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.foot .sc{{font-family:PFR,serif!important}}
+body,.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.foot .sc{{font-family:SS,serif!important}}
 .title{{font-size:18pt!important}}
-.sec h2,.info h4,.box h3,.lbl,.foot .ad{{font-family:PSC!important}}
+.sec h2,.info h4,.box h3,.lbl,.foot .ad{{font-family:SS!important}}
 .sec h2,.info h4,.box h3{{font-size:13pt!important}}
 .prices,.pl b{{font-size:13pt!important}}
 .n,.ci,.p,.sup,.end,.box p b{{font-size:11pt!important}}
@@ -86,9 +86,20 @@ body,.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.f
 .box{{background:#fff!important}}
 .s1 .it{{padding:5.9mm 0!important}} .s3 .it{{padding:5.6mm 0!important}} .s3 .sec{{margin:11mm 0 4mm!important}} .s2 .it{{padding:4.3mm 0!important}} .pg2 .it{{padding:2mm 0!important}}
 .info:not(.ginfo) h4{{margin-top:9.5mm!important}} .ginfo h4{{margin-top:7.5mm!important}} .ginfo p{{margin-bottom:3.4mm!important}}
-.tag{{font-family:PFR,serif!important;font-style:normal;letter-spacing:.8pt}}
+.tag{{font-family:SS,serif!important;font-style:normal;letter-spacing:.8pt}}
 .sec h2:before,.sec h2:after{{content:""!important;display:inline-block;width:1.5mm;height:1.5mm;background:var(--gold);transform:rotate(45deg);top:-1.4pt!important}}
 .prices span{{display:inline-block;width:2mm;height:2mm;background:var(--gold);transform:rotate(45deg);font-size:0!important}}
+
+/* === Yazışma yazı tipi: Source Serif 4 (Claude uygulamasındaki serif yazıya en yakın açık yazı tipi) === */
+@font-face{{font-family:SS;src:url({F}/source-serif-4/files/source-serif-4-latin-400-normal.woff2);font-weight:400}}
+@font-face{{font-family:SS;src:url({F}/source-serif-4/files/source-serif-4-latin-400-italic.woff2);font-weight:400;font-style:italic}}
+@font-face{{font-family:SS;src:url({F}/source-serif-4/files/source-serif-4-latin-600-normal.woff2);font-weight:600}}
+@font-face{{font-family:SS;src:url({F}/source-serif-4/files/source-serif-4-latin-600-italic.woff2);font-weight:600;font-style:italic}}
+@font-face{{font-family:SS;src:url({F}/source-serif-4/files/source-serif-4-latin-700-normal.woff2);font-weight:700}}
+*{{font-family:SS,serif!important}}
+.title,.sec h2,.info h4,.box h3,.lbl,.foot .ad{{text-transform:uppercase;font-weight:600!important}}
+.title{{letter-spacing:2.5pt!important}} .sec h2{{letter-spacing:2pt!important}} .info h4,.box h3{{letter-spacing:1.2pt!important}}
+.n,.ci,.p,.prices,.pl b,.end,.box p b{{font-weight:600!important}}
 .logo{{width:58mm!important}} .logo.sm{{width:44mm!important}}
 """
 
@@ -239,14 +250,14 @@ print('ok')
 
 # ---------------- COLD BUFFET MENU 2026 ----------------
 CB_CSS = """<style>
-.cb .ci{text-align:center;font-family:PF;font-weight:600;font-size:12pt;color:var(--ink);padding:1.3mm 0;letter-spacing:.2pt}
+.cb .ci{text-align:center;font-family:SS;font-weight:600;font-size:12pt;color:var(--ink);padding:1.3mm 0;letter-spacing:.2pt}
 .cb .ci .tag{font-size:9pt}
 .cb .cd{display:block;width:1.6mm;height:1.6mm;background:var(--gold);transform:rotate(45deg);margin:0 auto;opacity:.75}
 .cb .pl{text-align:center;margin:0 0 2.5mm}
-.cb .pl b{font-family:PF;font-weight:700;color:var(--bur);font-size:17pt;display:block}
+.cb .pl b{font-family:SS;font-weight:700;color:var(--bur);font-size:17pt;display:block}
 .cb .pl i{font-size:11.8pt;color:var(--mute)}
-.cb .lbl{text-align:center;font-family:PSC;font-weight:700;font-size:9.6pt;letter-spacing:2.4pt;color:var(--gold);margin:1mm 0 1mm}
-.cb .sp{display:block;font-family:CG;font-style:italic;font-weight:600;font-size:10.8pt;color:var(--bur);margin-top:.6mm;letter-spacing:0}
+.cb .lbl{text-align:center;font-family:SS;font-weight:700;font-size:9.6pt;letter-spacing:2.4pt;color:var(--gold);margin:1mm 0 1mm}
+.cb .sp{display:block;font-family:SS;font-style:italic;font-weight:600;font-size:10.8pt;color:var(--bur);margin-top:.6mm;letter-spacing:0}
 .cb .logo{width:74mm} .cb .title{font-size:21pt;margin-top:6mm}
 .cb .sec{margin:6.5mm 0 2.5mm}
 .ginfo p{font-size:11.7pt;line-height:1.36;margin-bottom:1.6mm}
