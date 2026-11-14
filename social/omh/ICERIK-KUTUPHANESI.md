@@ -70,3 +70,7 @@ Daha önce paylaşılmış: Christmas Festive Menu postu (gece binası), Christm
 - Miller & Carter örneği: fiyat ve paket ilk satırda ("All this for £19.95"). OMH Steak Deal'de de fiyat+paket öne çıkar: "Steak night for two – just £44: two 8oz 28-day aged British rump steaks + a bottle of wine".
 - Basılı menüde düzeltilecekler: saat 9pm, SIRLION→Sirloin, TOFFE→Toffee, Brulé→Brûlée, logo yazı üstüne binmesin. Menü yeniden tasarımı 13 Kasım 14:07 görevinde.
 - Facebook'taki Coffee & Cake gönderisinde Türkçe not kalmış ve "Served daily" yazıyor – düzeltilecek.
+
+## Menüler (social/omh/menus/)
+- `menus/cold-buffet-menu-2026.md` – Cold Buffet Menu 2026 (One Course £28.00, Two Course £31.50, peynir tabağı +£3.25/kişi) ve "General Information" metni aynen; kaynak ekran görüntüleri `menus/kaynak/` (Ali Bey, 14 Kasım 2026). Bu General Information metni gruplara yönelik tüm menülerde gerçek dil kaynağı.
+- `menus/taslak-2026-11-13/` – Evening A La Carte ve Set Menu 2026 yeniden tasarım taslakları (PDF + PNG + build.py). Onay bekliyor.
