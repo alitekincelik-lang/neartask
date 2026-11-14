@@ -108,8 +108,8 @@ body,.d,.note,.intro,.sub,.info p,.info li,.box p,.red,.mnote,.pl i,.sp,.lead,.f
 .gcard{{display:block;width:52mm;height:auto;box-shadow:0 0 0 .4pt rgba(0,0,0,.08)}}
 .gcard.c{{width:57mm;margin:0 auto 3mm}}
 .gcard.f{{float:right;width:50mm;margin:1mm 0 3mm 6mm}}
-.s1 .it{{padding:5.9mm 0!important}} .s3 .it{{padding:1.65mm 0!important}} .s3 .sec{{margin:6mm 0 2mm!important}}
-.info:not(.ginfo) h4{{margin-top:9.5mm!important}} .ginfo h4{{margin-top:6mm!important}} .ginfo p{{margin-bottom:2.6mm!important}}
+.s1 .it{{padding:5.9mm 0!important}} .s3 .it{{padding:5.6mm 0!important}} .s3 .sec{{margin:11mm 0 4mm!important}}
+.info:not(.ginfo) h4{{margin-top:9.5mm!important}} .ginfo h4{{margin-top:7.5mm!important}} .ginfo p{{margin-bottom:3.4mm!important}}
 .logo{{width:58mm!important}} .logo.sm{{width:44mm!important}}
 """
 
@@ -222,7 +222,7 @@ s3 = [f'<img class="logo sm" src="{LOGO}">',
       item('Baked White Chocolate & Strawberry Cheesecake', 'Served with Popping Candy & Strawberry Ice Cream'),
       item('Tiramisu'),
       item('Vegan Ice Cream and Sorbets', '', '', 'VG'),
-      '<div class="grow"></div>', GCARD_C,
+      '<div class="grow"></div>',
       '<div class="note" style="margin-bottom:1mm">(VG) Vegan. Please contact the hotel for allergen and dietary information.</div>',
       ]
 info = [f'<img class="logo sm" src="{LOGO}">',
@@ -307,7 +307,7 @@ cb1 = [CB_CSS, f'<img class="logo" src="{LOGO}">',
 cb2 = [CB_CSS, f'<img class="logo sm" src="{LOGO}">',
        '<div class="title" style="font-size:16pt">General Information</div>',
        '<div class="orn"><i></i></div>',
-       '<div class="info ginfo">', GCARD_F,
+       '<div class="info ginfo">',
        '<p class="lead">Thank you for choosing us as a venue to host your event. Please read the information below that applies to this menu. If you have any questions, please do not hesitate to contact us.</p>',
        '<h4>Menu</h4>',
        '<p>We require the final number that we are catering for, along with any allergies or dietary requirements, 7 days prior to the booking.</p>',
