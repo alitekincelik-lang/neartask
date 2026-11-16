@@ -1,5 +1,5 @@
 // Offline support, faster start-up + phone notifications.
-const CACHE = "neartask-v9";
+const CACHE = "neartask-v10";
 // Wait at most this long for the network when opening the app; otherwise start from the saved copy.
 const PAGE_TIMEOUT_MS = 1500;
 self.addEventListener("install", (e) => {
