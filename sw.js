@@ -1,7 +1,5 @@
 // Offline support, faster start-up + phone notifications.
-const CACHE = "neartask-v10";
-// Wait at most this long for the network when opening the app; otherwise start from the saved copy.
-const PAGE_TIMEOUT_MS = 1500;
+const CACHE = "neartask-v11";
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(["./", "./index.html", "./icon.svg", "./apple-touch-icon.png", "./icon-192.png", "./manifest.webmanifest"])).catch(() => {}));
   self.skipWaiting();
@@ -33,16 +31,14 @@ self.addEventListener("fetch", (e) => {
   }
   if (url.origin !== self.location.origin) return;
 
-  // Opening the app: use the newest version if it arrives quickly, otherwise show the saved copy straight away
-  // (the newest version is still saved in the background for next time).
+  // Opening the app: start from the saved copy straight away (no waiting for the network) and fetch the newest
+  // version in the background, so it is used the next time the app opens. Without a saved copy, wait for the network.
   if (req.mode === "navigate") {
     const net = fetch(req).then((res) => save(req, res));
-    const saved = new Promise((resolve) => setTimeout(resolve, PAGE_TIMEOUT_MS)).then(() =>
-      caches.match(req).then((r) => r || caches.match("./index.html")));
     e.respondWith(
-      Promise.race([net.catch(() => caches.match(req).then((r) => r || caches.match("./index.html"))), saved.then((r) => r || net)])
+      caches.match(req).then((r) => r || caches.match("./index.html"))
         .then((r) => r || net)
-        .catch(() => caches.match("./index.html"))
+        .catch(() => net)
     );
     e.waitUntil(net.catch(() => {}));
     return;
