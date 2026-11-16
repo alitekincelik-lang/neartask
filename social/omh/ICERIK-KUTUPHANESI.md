@@ -66,9 +66,10 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 | 21 Kas | Sunday Roast Tomorrow | approved/2026-11-21.jpg |
 | 22 Kas | Sunday Roast is served today | approved/2026-11-22.jpg |
 | 23 Kas | Coffee & Cake Reel (müzikli, yedekten; Ali Bey onayı 16 Kas) | approved/2026-11-23.mp4 |
+| 24 Kas | Dinner Tonight – steaks from £22 (restaurant-stone-fireplace-01) | approved/2026-11-24.jpg |
+| 25 Kas | Festive Menu from 27 November (christmas-fireplace-lounge-01) | approved/2026-11-25.jpg |
 STOK (Ali Bey 14 Kasım: "Stokta bulunsun, ihtiyaç olursa kullanırsın" – onaylı, istenen güne kopyalanabilir): `stock/christmas-parties-reel.mp4` + `stock/christmas-parties.jpg` + `stock/christmas-parties.txt` (Christmas Parties, events-room-02, festive menu 27 Kas–24 Ara). 27 Kasım–24 Aralık arasındaki bir Noel gününde kullan.
 Yedek (23 Kasım için kullanıldı): Coffee & Cake Reel (4 gerçek fotoğraf, müzikli) – `social/omh/photos/coffee-cake-reel-spare.mp4`.
-Hazır taslaklar (onaysız, 16 Kas): "Dinner Tonight – steaks from £22" (restaurant-stone-fireplace-01) ve "Festive Menu from 27 November" (christmas-fireplace-lounge-01).
 Daha önce paylaşılmış: Christmas Festive Menu postu (gece binası), Christmas menü albümü (3 sayfa), Steak Night 12 Kasım.
 
 ## 6. Örnek cevap metinleri (otel adına)
