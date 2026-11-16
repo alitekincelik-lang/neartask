@@ -50,7 +50,9 @@ Ali Bey'in 13 Kasım 2026'ya kadar verdiği bilgiler, onayladığı kurallar ve 
 - Drive "Steak Night" – onaylı afişler (Steak_Night_Poster_01/02).
 - Videolar: mutfakta roast/gravy videosu (Reel 13 Kasım), tören odası ve avizeli salon videoları (Reel 18 Kasım).
 - `social/omh/photos/steak-01..04.jpg` – iki rump steak tabağı, chips sepeti, salata (Eylül 2026). 19 Kasım Steak Night tasarımında steak-01 kullanıldı.
-- EKSİK: Noel süsleri/yemeği, bar, oda fotoğrafları.
+- `social/omh/photos/bedroom-01..11.jpg`, `bathroom-01.jpg` – gerçek oda ve banyo fotoğrafları (Ali Bey gönderdi, 16 Kasım 2026).
+- `social/omh/photos/restaurant-wide-01.jpg`, `bar-lounge-wide-01.jpg`, `christmas-fireplace-steak-01..02.jpg` – restoran, bar, Noel süslü şömine + steak (16 Kasım 2026).
+- `social/omh/rooms/` – Ali Bey'in seçtiği oda tasarımları (16 Kasım 2026): omh-room-stay-the-night.jpg, omh-room-dine-and-stay.jpg, omh-room-your-room-is-ready.jpg. Stil: serif bordo başlık, altın süs, bordo şerit, sabit footer. Henüz takvime konmadı; paylaşım için tarih ve metin onayı gerekir.
 
 ## 5. Onaylı paylaşımlar
 | Tarih | İçerik | Dosya |
