@@ -1,5 +1,15 @@
 # Hayırmatik – notlar (17 Kasım 2026)
 
+## ZORUNLU İMZA SATIRI (her tasarımda, istisnasız – Ali Bey 15.11.2026 kuralı)
+Paylaşıma hazırlamadan önce kontrol et; eksikse tasarım ONAYA SUNULMAZ:
+- [ ] SOLDA: logo (Sera logosu + yanında "HAYIRMATİK" marka adı; Hayırmatik'in ayrı logosu yok)
+- [ ] ORTADA: Facebook, Instagram, LinkedIn, YouTube ikonları – her biri platformun KENDİ orijinal renginde
+      (Hayırmatik hesabı olanlar Hayırmatik'e, olmayanlar Sera Reklam hesaplarına gider)
+- [ ] SAĞDA: serareklam.com.tr + +90 312 847 50 60
+- [ ] Ayırıcı çizgi YOK.
+Not: 17.11.2026 ilk gönderide ortadaki ikonlar eksikti ve ayırıcı çizgi vardı – hata, tekrarlanmayacak.
+
+## Bilgiler
 - Facebook sayfası: Hayırmatik (id 61596613353298), Ali Bey'in Facebook hesabı altında.
 - Instagram: @hayirmatik.tr
 - İletişim: Sera Reklam bilgileri (serareklam.com.tr, +90 312 847 50 60).
