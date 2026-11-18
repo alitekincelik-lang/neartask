@@ -17,3 +17,9 @@ Not: 17.11.2026 ilk gönderide ortadaki ikonlar eksikti ve ayırıcı çizgi var
 - photos/turuncu-makine-01.jpg: gerçek makine fotoğrafı (paylaşılabilir).
 - photos/ptt-teklif-cizimleri/: PTT logolu teklif çizimleri. PTT izni olmadan PAYLAŞILMAZ.
 - Marka: HAYIRMATİK 2012 22718 (09.03.2032'ye kadar), BAĞIŞMATİK 2011 69221 (24.08.2031'e kadar), sahibi Sera Reklamcılık.
+
+## İmza satırı düzeltmesi (18 Kasım 2026 – Ali Bey "Uygun" dedi)
+- approved/2026-11-18 … 2026-11-24 görsellerinin imza satırı kurala göre yenilendi: solda Sera logosu + "HAYIRMATİK", ortada orijinal renkli 4 ikon, sağda site + kırmızı telefon, ayırıcı çizgi yok. Görsellerin üst kısmı değişmedi.
+- Kaynak: template/footer.html + template/build.py (Raleway: npm @fontsource/raleway; logo: social/sera/template/logo_light.png). Yeni tasarımlarda bu imza satırı kullanılır.
+- 17 Kasım'da paylaşılan tanıtım görseli (eski imza satırıyla) kayıt olarak olduğu gibi bırakıldı.
+- AÇIK SORU: 2026-11-18 görselinde PTT logosu var; PTT izni Ali Bey'e soruldu, yanıt bekleniyor.
