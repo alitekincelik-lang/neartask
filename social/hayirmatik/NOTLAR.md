@@ -22,4 +22,4 @@ Not: 17.11.2026 ilk gönderide ortadaki ikonlar eksikti ve ayırıcı çizgi var
 - approved/2026-11-18 … 2026-11-24 görsellerinin imza satırı kurala göre yenilendi: solda Sera logosu + "HAYIRMATİK", ortada orijinal renkli 4 ikon, sağda site + kırmızı telefon, ayırıcı çizgi yok. Görsellerin üst kısmı değişmedi.
 - Kaynak: template/footer.html + template/build.py (Raleway: npm @fontsource/raleway; logo: social/sera/template/logo_light.png). Yeni tasarımlarda bu imza satırı kullanılır.
 - 17 Kasım'da paylaşılan tanıtım görseli (eski imza satırıyla) kayıt olarak olduğu gibi bırakıldı.
-- AÇIK SORU: 2026-11-18 görselinde PTT logosu var; PTT izni Ali Bey'e soruldu, yanıt bekleniyor.
+- PTT logosu: 18–24 Kasım onaylı görsellerinde PTT logosu var. Ali Bey 18.11.2026'da soruldu, "İzin var" dedi; bu görseller paylaşılabilir.
