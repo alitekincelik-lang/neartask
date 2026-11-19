@@ -35,6 +35,7 @@ jobs:
           const SUPABASE_URL = "https://qayxsfanlheldqepegob.supabase.co";
           // Public anon key (the same one the app ships with). Row level security decides what it can read.
           const ANON_KEY = process.env.NT_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFheXhzZmFubGhlbGRxZXBlZ29iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4ODE4NDgsImV4cCI6MjEwODQ1Nzg0OH0.G7ewYasDxILFL9Lxi11Zph8ps7HTuW8GcRD_0b8Fjmc";
+          const TRACK = `<script>/* cookie-free visit count, see /privacy.html */(function(){try{var K="${ANON_KEY}",r="";try{var h=document.referrer?new URL(document.referrer).hostname:"";if(h&&!/neartask\\.co\\.uk$/.test(h))r=h}catch(e){}var q=new URLSearchParams(location.search),w=Math.min(innerWidth||0,(screen&&screen.width)||9999);fetch("${SUPABASE_URL}/rest/v1/rpc/track_visit",{method:"POST",keepalive:true,headers:{apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"},body:JSON.stringify({p:location.pathname.slice(0,120),r:r,us:q.get("utm_source")||"",um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",d:w<700?"mobile":w<1100?"tablet":"desktop"})}).catch(function(){})}catch(e){}})();</script>`;
           const OUT = process.cwd();
           const CATS = { hospitality: "Hospitality", retail: "Shops & retail", warehouse: "Warehouse & driving", cleaning: "Cleaning", repairs: "Handyman & repairs", painting: "Painting & decorating", assembly: "Furniture assembly", garden: "Garden", moving: "Moving & delivery", care: "Care & errands", family: "Childcare & pets", lessons: "Lessons & tutoring", beauty: "Beauty & wellbeing", events: "Events & parties", tech: "Tech & admin", auto: "Car & vehicle", flooring: "Flooring & carpets", building: "Building & walls", kitchens: "Kitchens & bathrooms", plumbing: "Plumbing & heating", electrical: "Electrical", doors: "Windows, doors & locks", roofing: "Roofing & gutters", appliances: "Appliance repair", other: "Other" };
           const STATIC_PAGES = [["/", "1.0"], ["/jobs/", "0.8"], ["/help/", "0.6"], ["/employers.html", "0.5"], ["/tradespeople.html", "0.5"], ["/safety.html", "0.4"], ["/privacy.html", "0.3"], ["/terms.html", "0.3"], ["/delete-account.html", "0.2"]];
@@ -140,6 +141,7 @@ jobs:
           ${body}
           <footer class="mute">NearTask is free to use: free to post, no commission. Run by Artwin Ltd (company no. 13371113). <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a></footer>
           </main>
+          ${TRACK}
           </body>
           </html>
           `;
